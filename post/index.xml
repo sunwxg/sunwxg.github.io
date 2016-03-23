@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sun Wang&#39;s Blog</title>
+    <link>http://sunwxg.github.io/post/</link>
+    <description>Recent content in Posts on Sun Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://sunwxg.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>jekyll add github equal blog</title>
+      <link>http://sunwxg.github.io/post/first-post/</link>
+      <pubDate>Tue, 22 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/first-post/</guid>
+      <description>
+
+&lt;h3 id=&#34;make-a-repository:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Make a Repository&lt;/h3&gt;
+
+&lt;p&gt;Following the &lt;a href=&#34;https://pages.github.com/&#34;&gt;https://pages.github.com/&lt;/a&gt; make a repository.&lt;/p&gt;
+
+&lt;h3 id=&#34;install-jekyll:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Install Jekyll&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;apt-get install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-new-jekyll-site:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Create new jekyll site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
+cd sunwxg.github.io
+jekyll new .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;browse-your-blog-site:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Browse your blog site&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;jekyll build
+jekyll serve
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Browse &lt;a href=&#34;http://localhost:4000&#34;&gt;http://localhost:4000&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;change-config-yml-file:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Change &lt;code&gt;_config.yml&lt;/code&gt; file&lt;/h3&gt;
+
+&lt;p&gt;Reference jekyll &lt;a href=&#34;https://jekyllrb.com/docs/configuration/&#34;&gt;manual&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;push-to-remote-repository:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Push to remote repository&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Browse &lt;a href=&#34;http://sunwxg.github.io&#34;&gt;http//sunwxg.github.io&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
