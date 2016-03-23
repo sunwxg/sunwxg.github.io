@@ -14,12 +14,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>about - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="about - Sun Wang&#39;s Blog">
+    <title>Use libwireshark decoding PACP files - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="Use libwireshark decoding PACP files - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/about/">
+    <meta property="og:url" content="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">
     
     
 
@@ -57,10 +57,10 @@
       <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
 
         <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
-        <meta itemprop="dateModified" content="2015-03-22T00:00:00&#43;00:00">
-        <meta itemprop="headline" content="about">
-        <meta itemprop="description" content="from sun wang&rsquo;s blog.">
-        <meta itemprop="url" content="http://sunwxg.github.io/about/">
+        <meta itemprop="dateModified" content="2016-03-23T00:00:00&#43;00:00">
+        <meta itemprop="headline" content="Use libwireshark decoding PACP files">
+        <meta itemprop="description" content="We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library. First do some initial work. init_process_policies(); epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL); /* cfile is a global varible */ cap_file_init(&amp;cfile); cfile.filename = filename; cfile.count = 0; cfile.epan = epan_new(); cfile.epan-&gt;data = &amp;cfile; cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts; Second read and decode packet. epan_dissect_t *edt; /* all the decoded data store in struct edt */ read_packet(&amp;edt); Print out packet.">
+        <meta itemprop="url" content="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
           <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
           <meta itemprop="width" content="800">
@@ -79,19 +79,70 @@
         </div>
 
         <header class="article-header">
-          <time itemprop="datePublished" pubdate="pubdate" datetime="2015-03-22T00:00:00&#43;00:00">Sun, Mar 22, 2015</time>
-          <h1 class="article-title">about</h1>
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-23T00:00:00&#43;00:00">Wed, Mar 23, 2016</time>
+          <h1 class="article-title">Use libwireshark decoding PACP files</h1>
         </header>
 
         <div class="article-body" itemprop="articleBody">
-          <p>from sun wang&rsquo;s blog.</p>
+          <p>We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library.</p>
+
+<p>First do some initial work.</p>
+
+<pre><code class="language-C">	init_process_policies();
+
+	epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+
+	/* cfile is a global varible */
+	cap_file_init(&amp;cfile);
+	cfile.filename = filename;
+
+	cfile.count = 0;
+	cfile.epan = epan_new();
+	cfile.epan-&gt;data = &amp;cfile;
+	cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
+</code></pre>
+
+<p>Second read and decode packet.</p>
+
+<pre><code class="language-C">	epan_dissect_t *edt;
+
+	/* all the decoded data store in struct edt */
+	read_packet(&amp;edt);
+</code></pre>
+
+<p>Print out packet.</p>
+
+<pre><code class="language-C">	/* print out as XML format */
+	proto_tree_write_pdml(edt, stdout);
+
+	/* print out as TEXT format */
+	proto_tree_print(&amp;print_args, edt, print_stream);
+</code></pre>
+
+<p>Release memory.</p>
+
+<pre><code class="language-C">	epan_dissect_free(edt);
+	edt = NULL;
+
+	free_frame_data_sequence(cfile.frames);
+	cfile.frames = NULL;
+
+	wtap_close(cfile.wth);
+	cfile.wth = NULL;
+
+	epan_free(cfile.epan);
+
+	epan_cleanup();
+</code></pre>
+
+<p>My source code is on <strong><a href="https://github.com/sunwxg/decode_by_libwireshark">github</a></strong>. You can follow the guide to run and debug.</p>
 
         </div>
 
 
 	<aside>
 	  <div class="section">Tags:
-	  
+	   <a href="http://sunwxg.github.io/tags/wireshark" class="section">wireshark</a> 
 
 	  </div>
 	</aside>

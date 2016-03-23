@@ -55,6 +55,21 @@
       
       <article class="li">
   <header>
+    <div class="date">Wed, Mar 23, 2016</div>
+    <div class="title"><a href="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">Use libwireshark decoding PACP files</a></div>
+  </header>
+
+  We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library. First do some initial work. init_process_policies(); epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL); /* cfile is a global varible */ cap_file_init(&amp;cfile); cfile.filename = filename; cfile.count = 0; cfile.epan = epan_new(); cfile.epan-&gt;data = &amp;cfile; cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts; Second read and decode packet. epan_dissect_t *edt; /* all the decoded data store in struct edt */ read_packet(&amp;edt); Print out packet.
+  <footer>
+    <a href="http://sunwxg.github.io/post/use-libwireshark-decode-packet/" class="btn btn-default">Read More…</a>
+  </footer>
+
+</article>
+<hr>
+
+      
+      <article class="li">
+  <header>
     <div class="date">Tue, Mar 22, 2016</div>
     <div class="title"><a href="http://sunwxg.github.io/post/first-post/">jekyll add github equal blog</a></div>
   </header>
@@ -101,6 +116,8 @@
       
       
       
+      
+      
     
   
 
@@ -121,6 +138,8 @@
       <h2 class="panel-title">tag</h2>
     </div>
     <div class="list-group">
+      
+      <a href="http://sunwxg.github.io/tags/wireshark" class="list-group-item">wireshark</a>
       
       <a href="http://sunwxg.github.io/tags/jekyll" class="list-group-item">jekyll</a>
       
