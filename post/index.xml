@@ -72,29 +72,29 @@
     
     <item>
       <title>jekyll add github equal blog</title>
-      <link>http://sunwxg.github.io/post/first-post/</link>
+      <link>http://sunwxg.github.io/post/jekyll-and-github/</link>
       <pubDate>Tue, 22 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://sunwxg.github.io/post/first-post/</guid>
+      <guid>http://sunwxg.github.io/post/jekyll-and-github/</guid>
       <description>
 
-&lt;h2 id=&#34;make-a-repository:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Make a Repository&lt;/h2&gt;
+&lt;h2 id=&#34;make-a-repository:94d627e12f394429874ffbc569f8f23a&#34;&gt;Make a Repository&lt;/h2&gt;
 
 &lt;p&gt;Following the &lt;a href=&#34;https://pages.github.com/&#34;&gt;https://pages.github.com/&lt;/a&gt; make a repository.&lt;/p&gt;
 
-&lt;h2 id=&#34;install-jekyll:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Install Jekyll&lt;/h2&gt;
+&lt;h2 id=&#34;install-jekyll:94d627e12f394429874ffbc569f8f23a&#34;&gt;Install Jekyll&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;apt-get install jekyll
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;create-new-jekyll-site:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Create new jekyll site&lt;/h2&gt;
+&lt;h2 id=&#34;create-new-jekyll-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Create new jekyll site&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
 cd sunwxg.github.io
 jekyll new .
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;browse-your-blog-site:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Browse your blog site&lt;/h2&gt;
+&lt;h2 id=&#34;browse-your-blog-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Browse your blog site&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;jekyll build
 jekyll serve
@@ -102,11 +102,11 @@ jekyll serve
 
 &lt;p&gt;Browse &lt;a href=&#34;http://localhost:4000&#34;&gt;http://localhost:4000&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;change-config-yml-file:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Change &lt;code&gt;_config.yml&lt;/code&gt; file&lt;/h2&gt;
+&lt;h2 id=&#34;change-config-yml-file:94d627e12f394429874ffbc569f8f23a&#34;&gt;Change &lt;code&gt;_config.yml&lt;/code&gt; file&lt;/h2&gt;
 
 &lt;p&gt;Reference jekyll &lt;a href=&#34;https://jekyllrb.com/docs/configuration/&#34;&gt;manual&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;push-to-remote-repository:f3b70d76da56e15d82042b9ef176d71f&#34;&gt;Push to remote repository&lt;/h2&gt;
+&lt;h2 id=&#34;push-to-remote-repository:94d627e12f394429874ffbc569f8f23a&#34;&gt;Push to remote repository&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;git push
 &lt;/code&gt;&lt;/pre&gt;
