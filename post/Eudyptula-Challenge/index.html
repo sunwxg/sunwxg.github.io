@@ -19,13 +19,13 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>Use libwireshark decoding PACP files - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="Use libwireshark decoding PACP files - Sun Wang&#39;s Blog">
+    <title>Endyptula Challenge Passed - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="Endyptula Challenge Passed - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">
-    <meta name="description" content="Use libwireshark library to decode PACP file in C code.">
+    <meta property="og:url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
+    
     
 
   </head>
@@ -62,10 +62,10 @@
       <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
 
         <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
-        <meta itemprop="dateModified" content="2016-03-23T00:00:00&#43;00:00">
-        <meta itemprop="headline" content="Use libwireshark decoding PACP files">
-        <meta itemprop="description" content="We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library. First do some initial work. init_process_policies(); epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL); /* cfile is a global varible */ cap_file_init(&amp;cfile); cfile.filename = filename; cfile.count = 0; cfile.epan = epan_new(); cfile.epan-&gt;data = &amp;cfile; cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts; Second read and decode packet. epan_dissect_t *edt; /* all the decoded data store in struct edt */ read_packet(&amp;edt); Print out packet.">
-        <meta itemprop="url" content="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">
+        <meta itemprop="dateModified" content="2016-03-24T00:00:00&#43;00:00">
+        <meta itemprop="headline" content="Endyptula Challenge Passed">
+        <meta itemprop="description" content="What is Endyptula Challenge? You can get answer at http://www.eudyptula-challenge.org/. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge. When we learn linux kernel programming, there are many books we can read. &lt;Linux Kernel Development&gt; &lt;Linux Device Drivers&gt; &lt;Understanding the Linux Kernel, Third Edition&gt; But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.">
+        <meta itemprop="url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
           <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
           <meta itemprop="width" content="800">
@@ -84,70 +84,39 @@
         </div>
 
         <header class="article-header">
-          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-23T00:00:00&#43;00:00">Wed, Mar 23, 2016</time>
-          <h1 class="article-title">Use libwireshark decoding PACP files</h1>
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-24T00:00:00&#43;00:00">Thu, Mar 24, 2016</time>
+          <h1 class="article-title">Endyptula Challenge Passed</h1>
         </header>
 
         <div class="article-body" itemprop="articleBody">
-          <p>We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library.</p>
+          <p>What is Endyptula Challenge? You can get answer at <a href="http://www.eudyptula-challenge.org/">http://www.eudyptula-challenge.org/</a>. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge.</p>
 
-<p>First do some initial work.</p>
+<p>When we learn linux kernel programming, there are many books we can read.</p>
 
-<pre><code class="language-C">	init_process_policies();
+<ul>
+<li><p><a href="http://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468/ref=sr_1_1?ie=UTF8&amp;qid=1458812440&amp;sr=8-1&amp;keywords=linux+kernel+development">&lt;Linux Kernel Development&gt;</a></p></li>
 
-	epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+<li><p><a href="http://www.amazon.com/Linux-Device-Drivers-3rd-Edition/dp/0596005903/ref=pd_bxgy_14_3?ie=UTF8&amp;refRID=1TXM04ZY6GN1PZXPFCCF">&lt;Linux Device Drivers&gt;</a></p></li>
 
-	/* cfile is a global varible */
-	cap_file_init(&amp;cfile);
-	cfile.filename = filename;
+<li><p><a href="http://www.amazon.com/Understanding-Linux-Kernel-Third-Edition/dp/0596005652/ref=pd_bxgy_14_2?ie=UTF8&amp;refRID=16X7YFZVM2P5F6A4RY1H">&lt;Understanding the Linux Kernel, Third Edition&gt;</a></p></li>
+</ul>
 
-	cfile.count = 0;
-	cfile.epan = epan_new();
-	cfile.epan-&gt;data = &amp;cfile;
-	cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
-</code></pre>
+<p>But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.</p>
 
-<p>Second read and decode packet.</p>
+<p>Eudyptula Challenge is a good guider to take you walking through the linux kernel programming forest. Create &ldquo;Hello World&rdquo; module, compile linux kernel source code, create real linux kernel patch and send it out&hellip;</p>
 
-<pre><code class="language-C">	epan_dissect_t *edt;
+<p>From 20 tasks we can learn many useful knowledge. Like we find a way in the forest to learn linux kernel programming, we will never lost in knowledge forest.</p>
 
-	/* all the decoded data store in struct edt */
-	read_packet(&amp;edt);
-</code></pre>
+<p>I take one year to finish this challenge. I&rsquo;m number 84 to pass it.</p>
 
-<p>Print out packet.</p>
-
-<pre><code class="language-C">	/* print out as XML format */
-	proto_tree_write_pdml(edt, stdout);
-
-	/* print out as TEXT format */
-	proto_tree_print(&amp;print_args, edt, print_stream);
-</code></pre>
-
-<p>Release memory.</p>
-
-<pre><code class="language-C">	epan_dissect_free(edt);
-	edt = NULL;
-
-	free_frame_data_sequence(cfile.frames);
-	cfile.frames = NULL;
-
-	wtap_close(cfile.wth);
-	cfile.wth = NULL;
-
-	epan_free(cfile.epan);
-
-	epan_cleanup();
-</code></pre>
-
-<p>My source code is on <strong><a href="https://github.com/sunwxg/decode_by_libwireshark">github</a></strong>. You can follow the guide to run and debug.</p>
+<p>Now send email to atttend challenge, you will open the linux kernel programming door.</p>
 
         </div>
 
 
 	<aside>
 	  <div class="section">Tags:
-	   <a href="http://sunwxg.github.io/tags/wireshark" class="section">wireshark</a> 
+	   <a href="http://sunwxg.github.io/tags/linux" class="section">linux</a> 
 
 	  </div>
 	</aside>

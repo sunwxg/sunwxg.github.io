@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Sun Wang&#39;s Blog</title>
+    <link>http://sunwxg.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Sun Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://sunwxg.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Endyptula Challenge Passed</title>
+      <link>http://sunwxg.github.io/post/Eudyptula-Challenge/</link>
+      <pubDate>Thu, 24 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/Eudyptula-Challenge/</guid>
+      <description>&lt;p&gt;What is Endyptula Challenge? You can get answer at &lt;a href=&#34;http://www.eudyptula-challenge.org/&#34;&gt;http://www.eudyptula-challenge.org/&lt;/a&gt;. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge.&lt;/p&gt;
+
+&lt;p&gt;When we learn linux kernel programming, there are many books we can read.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468/ref=sr_1_1?ie=UTF8&amp;amp;qid=1458812440&amp;amp;sr=8-1&amp;amp;keywords=linux+kernel+development&#34;&gt;&amp;lt;Linux Kernel Development&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/Linux-Device-Drivers-3rd-Edition/dp/0596005903/ref=pd_bxgy_14_3?ie=UTF8&amp;amp;refRID=1TXM04ZY6GN1PZXPFCCF&#34;&gt;&amp;lt;Linux Device Drivers&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/Understanding-Linux-Kernel-Third-Edition/dp/0596005652/ref=pd_bxgy_14_2?ie=UTF8&amp;amp;refRID=16X7YFZVM2P5F6A4RY1H&#34;&gt;&amp;lt;Understanding the Linux Kernel, Third Edition&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.&lt;/p&gt;
+
+&lt;p&gt;Eudyptula Challenge is a good guider to take you walking through the linux kernel programming forest. Create &amp;ldquo;Hello World&amp;rdquo; module, compile linux kernel source code, create real linux kernel patch and send it out&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;From 20 tasks we can learn many useful knowledge. Like we find a way in the forest to learn linux kernel programming, we will never lost in knowledge forest.&lt;/p&gt;
+
+&lt;p&gt;I take one year to finish this challenge. I&amp;rsquo;m number 84 to pass it.&lt;/p&gt;
+
+&lt;p&gt;Now send email to atttend challenge, you will open the linux kernel programming door.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
