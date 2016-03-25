@@ -84,8 +84,8 @@
         </div>
 
         <header class="article-header">
-          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-23T00:00:00&#43;00:00">Wed, Mar 23, 2016</time>
           <h1 class="article-title">Use libwireshark decoding PACP files</h1>
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-23T00:00:00&#43;00:00">Wed, Mar 23, 2016</time>
         </header>
 
         <div class="article-body" itemprop="articleBody">
@@ -93,54 +93,54 @@
 
 <p>First do some initial work.</p>
 
-<pre><code class="language-C">	init_process_policies();
+<pre><code class="language-C">init_process_policies();
 
-	epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
 
-	/* cfile is a global varible */
-	cap_file_init(&amp;cfile);
-	cfile.filename = filename;
+/* cfile is a global varible */
+cap_file_init(&amp;cfile);
+cfile.filename = filename;
 
-	cfile.count = 0;
-	cfile.epan = epan_new();
-	cfile.epan-&gt;data = &amp;cfile;
-	cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
+cfile.count = 0;
+cfile.epan = epan_new();
+cfile.epan-&gt;data = &amp;cfile;
+cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
 </code></pre>
 
 <p>Second read and decode packet.</p>
 
-<pre><code class="language-C">	epan_dissect_t *edt;
+<pre><code class="language-C">epan_dissect_t *edt;
 
-	/* all the decoded data store in struct edt */
-	read_packet(&amp;edt);
+/* all the decoded data store in struct edt */
+read_packet(&amp;edt);
 </code></pre>
 
 <p>Print out packet.</p>
 
-<pre><code class="language-C">	/* print out as XML format */
-	proto_tree_write_pdml(edt, stdout);
+<pre><code class="language-C">/* print out as XML format */
+proto_tree_write_pdml(edt, stdout);
 
-	/* print out as TEXT format */
-	proto_tree_print(&amp;print_args, edt, print_stream);
+/* print out as TEXT format */
+proto_tree_print(&amp;print_args, edt, print_stream);
 </code></pre>
 
 <p>Release memory.</p>
 
-<pre><code class="language-C">	epan_dissect_free(edt);
-	edt = NULL;
+<pre><code class="language-C">epan_dissect_free(edt);
+edt = NULL;
 
-	free_frame_data_sequence(cfile.frames);
-	cfile.frames = NULL;
+free_frame_data_sequence(cfile.frames);
+cfile.frames = NULL;
 
-	wtap_close(cfile.wth);
-	cfile.wth = NULL;
+wtap_close(cfile.wth);
+cfile.wth = NULL;
 
-	epan_free(cfile.epan);
+epan_free(cfile.epan);
 
-	epan_cleanup();
+epan_cleanup();
 </code></pre>
 
-<p>My source code is on <strong><a href="https://github.com/sunwxg/decode_by_libwireshark">github</a></strong>. You can follow the guide to run and debug.</p>
+<p>My source code is on <a href="https://github.com/sunwxg/decode_by_libwireshark">github</a>. You can follow the guide to run and debug.</p>
 
         </div>
 

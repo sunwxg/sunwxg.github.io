@@ -49,54 +49,54 @@
 
 &lt;p&gt;First do some initial work.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;	init_process_policies();
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;init_process_policies();
 
-	epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
 
-	/* cfile is a global varible */
-	cap_file_init(&amp;amp;cfile);
-	cfile.filename = filename;
+/* cfile is a global varible */
+cap_file_init(&amp;amp;cfile);
+cfile.filename = filename;
 
-	cfile.count = 0;
-	cfile.epan = epan_new();
-	cfile.epan-&amp;gt;data = &amp;amp;cfile;
-	cfile.epan-&amp;gt;get_frame_ts = tshark_get_frame_ts;
+cfile.count = 0;
+cfile.epan = epan_new();
+cfile.epan-&amp;gt;data = &amp;amp;cfile;
+cfile.epan-&amp;gt;get_frame_ts = tshark_get_frame_ts;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Second read and decode packet.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;	epan_dissect_t *edt;
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;epan_dissect_t *edt;
 
-	/* all the decoded data store in struct edt */
-	read_packet(&amp;amp;edt);
+/* all the decoded data store in struct edt */
+read_packet(&amp;amp;edt);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Print out packet.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;	/* print out as XML format */
-	proto_tree_write_pdml(edt, stdout);
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/* print out as XML format */
+proto_tree_write_pdml(edt, stdout);
 
-	/* print out as TEXT format */
-	proto_tree_print(&amp;amp;print_args, edt, print_stream);
+/* print out as TEXT format */
+proto_tree_print(&amp;amp;print_args, edt, print_stream);
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Release memory.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;	epan_dissect_free(edt);
-	edt = NULL;
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;epan_dissect_free(edt);
+edt = NULL;
 
-	free_frame_data_sequence(cfile.frames);
-	cfile.frames = NULL;
+free_frame_data_sequence(cfile.frames);
+cfile.frames = NULL;
 
-	wtap_close(cfile.wth);
-	cfile.wth = NULL;
+wtap_close(cfile.wth);
+cfile.wth = NULL;
 
-	epan_free(cfile.epan);
+epan_free(cfile.epan);
 
-	epan_cleanup();
+epan_cleanup();
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;My source code is on &lt;strong&gt;&lt;a href=&#34;https://github.com/sunwxg/decode_by_libwireshark&#34;&gt;github&lt;/a&gt;&lt;/strong&gt;. You can follow the guide to run and debug.&lt;/p&gt;
+&lt;p&gt;My source code is on &lt;a href=&#34;https://github.com/sunwxg/decode_by_libwireshark&#34;&gt;github&lt;/a&gt;. You can follow the guide to run and debug.&lt;/p&gt;
 </description>
     </item>
     
