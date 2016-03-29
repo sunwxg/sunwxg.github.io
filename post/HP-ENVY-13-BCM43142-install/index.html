@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>about - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="about - Sun Wang&#39;s Blog">
+    <title>HP ENVY13 BCM43142 Driver Install - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="HP ENVY13 BCM43142 Driver Install - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/about/">
+    <meta property="og:url" content="http://sunwxg.github.io/post/HP-ENVY-13-BCM43142-install/">
     
     
 </head>
@@ -55,10 +55,10 @@
 
         <article class="single well" itemscope="itemscope" itemtype="http://schema.org/Article">
             <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
-            <meta itemprop="dateModified" content="2015-03-22T00:00:00&#43;00:00">
-            <meta itemprop="headline" content="about">
-            <meta itemprop="description" content="Sun Wang&rsquo;s blog. github email">
-            <meta itemprop="url" content="http://sunwxg.github.io/about/">
+            <meta itemprop="dateModified" content="2016-03-29T00:00:00&#43;00:00">
+            <meta itemprop="headline" content="HP ENVY13 BCM43142 Driver Install">
+            <meta itemprop="description" content="HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&rsquo;t work. Use ifconfig can&rsquo;t see wireless card, only see lo. $ ifconfig lo Link encap:Local Loopback inet addr:127.0.0.1 Mask:255.0.0.0 inet6 addr: ::1/128 Scope:Host UP LOOPBACK RUNNING MTU:65536 Metric:1 RX packets:2191 errors:0 dropped:0 overruns:0 frame:0 TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:0 RX bytes:191462 (191.4 KB) TX bytes:191462 (191.4 KB) Use lspci can find wireless card. $ lspci |grep Network 01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01) Install Driver First download BCM43142 linux driver from http://broadcom.com/support/802.11.">
+            <meta itemprop="url" content="http://sunwxg.github.io/post/HP-ENVY-13-BCM43142-install/">
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
                 <meta itemprop="width" content="800">
@@ -77,21 +77,81 @@
             </div>
 
             <header class="article-header">
-                <h1>about</h1>
+                <h1>HP ENVY13 BCM43142 Driver Install</h1>
                 
-                <time itemprop="datePublished" pubdate="pubdate" datetime="2015-03-22T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on March 22, 2015</time>
+                <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-29T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on March 29, 2016</time>
                 
 
                 <div class="fa fa-tags">
-                
+                 <a href="http://sunwxg.github.io/tags/linux" class="tag">linux</a> <a href="http://sunwxg.github.io/tags/driver" class="tag">driver</a> 
 		</div>
 
             </header>
 
-            <p><p>Sun Wang&rsquo;s blog.</p>
+            <p>
 
-<p><a href="http://sunwxg.github.com">github</a>
-<a href="mailto:sun.wxg@gmail.com">email</a></p>
+<p>HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&rsquo;t work. Use <code>ifconfig</code> can&rsquo;t see wireless card, only see lo.</p>
+
+<pre><code>$ ifconfig
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2191 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:191462 (191.4 KB)  TX bytes:191462 (191.4 KB)
+</code></pre>
+
+<p>Use <code>lspci</code> can find wireless card.</p>
+
+<pre><code>$ lspci |grep Network
+01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
+</code></pre>
+
+<h3 id="install-driver:ce1783a100b0daa7a7d58e9ac1bda53f">Install Driver</h3>
+
+<ul>
+<li><p>First download BCM43142 linux driver from <a href="http://broadcom.com/support/802.11">http://broadcom.com/support/802.11</a>. I download version 6.30.223.271.</p></li>
+
+<li><p>Untar the downloaded file.</p></li>
+</ul>
+
+<pre><code>mkdir bcm
+tar xzf hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz -C bcm
+</code></pre>
+
+<ul>
+<li>Build module.</li>
+</ul>
+
+<pre><code>cd bcm
+make API=CFG80211
+</code></pre>
+
+<ul>
+<li>Install module.</li>
+</ul>
+
+<pre><code>sudo make install
+depmod
+</code></pre>
+
+<ul>
+<li>Unload bcma module.</li>
+</ul>
+
+<pre><code>echo &quot;blacklist bcma&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf
+</code></pre>
+
+<ul>
+<li>Reboot laptop</li>
+</ul>
+
+<pre><code>sudo reboot
+</code></pre>
+
+<p>Now WiFi work well.</p>
 </p>
 
         </article>
@@ -115,11 +175,11 @@
       
       <li><a href="http://sunwxg.github.io/tags/linux">linux</a></li>
       
-      <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
-      
       <li><a href="http://sunwxg.github.io/tags/driver">driver</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
+      
+      <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
       
     </ul>
   </div>

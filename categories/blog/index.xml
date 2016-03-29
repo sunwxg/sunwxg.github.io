@@ -6,8 +6,81 @@
     <description>Recent content in Blog on Sun Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Mar 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://sunwxg.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HP ENVY13 BCM43142 Driver Install</title>
+      <link>http://sunwxg.github.io/post/HP-ENVY-13-BCM43142-install/</link>
+      <pubDate>Tue, 29 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/HP-ENVY-13-BCM43142-install/</guid>
+      <description>
+
+&lt;p&gt;HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&amp;rsquo;t work. Use &lt;code&gt;ifconfig&lt;/code&gt; can&amp;rsquo;t see wireless card, only see lo.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ifconfig
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:2191 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:191462 (191.4 KB)  TX bytes:191462 (191.4 KB)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use &lt;code&gt;lspci&lt;/code&gt; can find wireless card.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ lspci |grep Network
+01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;install-driver:ce1783a100b0daa7a7d58e9ac1bda53f&#34;&gt;Install Driver&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;First download BCM43142 linux driver from &lt;a href=&#34;http://broadcom.com/support/802.11&#34;&gt;http://broadcom.com/support/802.11&lt;/a&gt;. I download version 6.30.223.271.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Untar the downloaded file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir bcm
+tar xzf hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz -C bcm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Build module.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;cd bcm
+make API=CFG80211
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install module.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo make install
+depmod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unload bcma module.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;blacklist bcma&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reboot laptop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now WiFi work well.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Endyptula Challenge Passed</title>
