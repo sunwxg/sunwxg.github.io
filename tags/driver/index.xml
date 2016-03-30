@@ -79,6 +79,8 @@ depmod
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now WiFi work well.&lt;/p&gt;
+
+&lt;p&gt;If you meet any other problem, you can reference dirver &lt;a href=&#34;http://www.broadcom.com/docs/linux_sta/README_6.30.223.271.txt&#34;&gt;release note&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
