@@ -6,8 +6,35 @@
     <description>Recent content on Sun Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Mar 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://sunwxg.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu 15.10 Sunpinyin Install</title>
+      <link>http://sunwxg.github.io/post/Ubuntu-15-10-sunpinying-install/</link>
+      <pubDate>Wed, 30 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/Ubuntu-15-10-sunpinying-install/</guid>
+      <description>&lt;p&gt;In Ubuntu 15.10 I use Sun Pinyin as Chinese input.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Active fcitx input frame work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;im-config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Open &lt;code&gt;System Setting&lt;/code&gt;-&amp;gt; &lt;code&gt;Language Support&lt;/code&gt;. At &lt;code&gt;Keyboard input method system:&lt;/code&gt;, select &lt;code&gt;fcitx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Logout and Login&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now you can user &lt;code&gt;Ctrl + Space&lt;/code&gt; to switch input method between English and Chinese.&lt;/p&gt;
+
+&lt;p&gt;Press &lt;code&gt;dash&lt;/code&gt; and input &lt;code&gt;fcitx configration&lt;/code&gt;, open fcitx configration tool to change any parameter for sun pinying, like fuzzy input.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>HP ENVY13 BCM43142 Driver Install</title>
