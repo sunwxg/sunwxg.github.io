@@ -18,7 +18,10 @@
       <description>&lt;p&gt;In Ubuntu 15.10 I use Sun Pinyin as Chinese input.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Active fcitx input frame work&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install Chinese language.
+Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Support&lt;/code&gt;. Press &lt;code&gt;Install/Remove Languages...&lt;/code&gt;, then select &lt;code&gt;Chinese(Simplified)&lt;/code&gt;. Press &lt;code&gt;Apply Changes&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Active fcitx input frame work&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;im-config
@@ -30,7 +33,7 @@
 &lt;li&gt;&lt;p&gt;Logout and Login&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Now you can user &lt;code&gt;Ctrl + Space&lt;/code&gt; to switch input method between English and Chinese.&lt;/p&gt;
+&lt;p&gt;Now you can use &lt;code&gt;Ctrl + Space&lt;/code&gt; to switch input method between English and Chinese.&lt;/p&gt;
 
 &lt;p&gt;Press &lt;code&gt;dash&lt;/code&gt; and input &lt;code&gt;fcitx configration&lt;/code&gt;, open fcitx configration tool to change any parameter for sun pinying, like fuzzy input.&lt;/p&gt;
 </description>
