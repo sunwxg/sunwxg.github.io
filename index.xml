@@ -256,8 +256,10 @@ jekyll serve
       <guid>http://sunwxg.github.io/about/</guid>
       <description>&lt;p&gt;Sun Wang&amp;rsquo;s blog.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://sunwxg.github.com&#34;&gt;github&lt;/a&gt;
-&lt;a href=&#34;mailto:sun.wxg@gmail.com&#34;&gt;email&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/sunwxg&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:sun.wxg@gmail.com&#34;&gt;email&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
