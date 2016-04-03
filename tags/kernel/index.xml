@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kernel on Sun Wang&#39;s Blog</title>
+    <link>http://sunwxg.github.io/tags/kernel/</link>
+    <description>Recent content in Kernel on Sun Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://sunwxg.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Create cscope database for linux kernel source code</title>
+      <link>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</guid>
+      <description>&lt;p&gt;I often use cscope to browse linux kernel source code in Vim. It is very convenient.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make cscope
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can use &lt;code&gt;make cscope&lt;/code&gt; to generate cscope database for linux kernel source code.&lt;/p&gt;
+
+&lt;p&gt;But if we only use &lt;code&gt;make cscope&lt;/code&gt;, we can&amp;rsquo;t use cscope database in Vim. Because in &lt;code&gt;cscope.files&lt;/code&gt;, the file path is relative path.&lt;/p&gt;
+
+&lt;p&gt;We should use absolute file path. So we need to add one parameter &lt;code&gt;O=.&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make O=. cscope
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Make new kernel image and install on Ubuntu</title>
+      <link>http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/</guid>
+      <description>&lt;p&gt;If you want to use latest version kernel on your Ubuntu, you need to compile kernel source code by yourself. Let&amp;rsquo;s make and install it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Download the latest version kernel source code from &lt;a href=&#34;https://www.kernel.org/&#34;&gt;https://www.kernel.org/&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Untar the downloaded files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;tar xf linux-4.5.tar.xz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prepare &lt;code&gt;.config&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;cd linux-4.5
+cp /boot/config-`uname -r` ./.config
+make menuconfig
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Select &lt;code&gt;Load&lt;/code&gt;, load &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Select &lt;code&gt;Save&lt;/code&gt;, save &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Select &lt;code&gt;Exit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make kernel image.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo make-kpkg --initrd kernel_image
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install kernel image.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now reboot PC, system will use the new kernel.&lt;/p&gt;
+
+&lt;p&gt;If you want to remove one kernel image package, then&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg --purge linux-image-4.5.0+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
