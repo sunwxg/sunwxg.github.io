@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>Endyptula Challenge Passed - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="Endyptula Challenge Passed - Sun Wang&#39;s Blog">
+    <title>Mount home disk by fstab file - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="Mount home disk by fstab file - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
+    <meta property="og:url" content="http://sunwxg.github.io/post/mount-home-disk-in-fstab/">
     
     
 </head>
@@ -55,10 +55,10 @@
 
         <article class="single well" itemscope="itemscope" itemtype="http://schema.org/Article">
             <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
-            <meta itemprop="dateModified" content="2016-03-24T00:00:00&#43;00:00">
-            <meta itemprop="headline" content="Endyptula Challenge Passed">
-            <meta itemprop="description" content="What is Endyptula Challenge? You can get answer at http://www.eudyptula-challenge.org/. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge. When we learn linux kernel programming, there are many books we can read. &lt;Linux Kernel Development&gt; &lt;Linux Device Drivers&gt; &lt;Understanding the Linux Kernel, Third Edition&gt; But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.">
-            <meta itemprop="url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
+            <meta itemprop="dateModified" content="2016-04-03T00:00:00&#43;00:00">
+            <meta itemprop="headline" content="Mount home disk by fstab file">
+            <meta itemprop="description" content="I want to mount disk /dev/sda3 to be /home. I need to add one line in /etc/fstab file. Find /dev/sda3 disk UUID. $ lsblk -o &#43;UUID /dev/sda3 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT UUID sda3 8:3 0 203.1G 0 part /home c0b3529a-c9ef-4c92-88c2-b278a7c4111b Add one line in /etc/fstab file. UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2 Reboot PC.">
+            <meta itemprop="url" content="http://sunwxg.github.io/post/mount-home-disk-in-fstab/">
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
                 <meta itemprop="width" content="800">
@@ -77,9 +77,9 @@
             </div>
 
             <header class="article-header">
-                <h1>Endyptula Challenge Passed</h1>
+                <h1>Mount home disk by fstab file</h1>
                 
-                <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-24T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on March 24, 2016</time>
+                <time itemprop="datePublished" pubdate="pubdate" datetime="2016-04-03T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on April 3, 2016</time>
                 
 
                 <div class="fa fa-tags">
@@ -88,25 +88,28 @@
 
             </header>
 
-            <p><p>What is Endyptula Challenge? You can get answer at <a href="http://www.eudyptula-challenge.org/">http://www.eudyptula-challenge.org/</a>. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge.</p>
-
-<p>When we learn linux kernel programming, there are many books we can read.</p>
+            <p><p>I want to mount disk <code>/dev/sda3</code> to be <code>/home</code>.
+I need to add one line in <code>/etc/fstab</code> file.</p>
 
 <ul>
-<li><a href="http://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468/ref=sr_1_1?ie=UTF8&amp;qid=1458812440&amp;sr=8-1&amp;keywords=linux+kernel+development">&lt;Linux Kernel Development&gt;</a></li>
-<li><a href="http://www.amazon.com/Linux-Device-Drivers-3rd-Edition/dp/0596005903/ref=pd_bxgy_14_3?ie=UTF8&amp;refRID=1TXM04ZY6GN1PZXPFCCF">&lt;Linux Device Drivers&gt;</a></li>
-<li><a href="http://www.amazon.com/Understanding-Linux-Kernel-Third-Edition/dp/0596005652/ref=pd_bxgy_14_2?ie=UTF8&amp;refRID=16X7YFZVM2P5F6A4RY1H">&lt;Understanding the Linux Kernel, Third Edition&gt;</a></li>
+<li>Find <code>/dev/sda3</code> disk <code>UUID</code>.</li>
 </ul>
 
-<p>But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.</p>
+<pre><code>$ lsblk -o +UUID /dev/sda3
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT UUID
+sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
+</code></pre>
 
-<p>Eudyptula Challenge is a good guider to take you walking through the linux kernel programming forest. Create &ldquo;Hello World&rdquo; module, compile linux kernel source code, create real linux kernel patch and send it out&hellip;</p>
+<ul>
+<li>Add one line in <code>/etc/fstab</code> file.</li>
+</ul>
 
-<p>From 20 tasks we can learn many useful knowledge. Like we find a way in the forest to learn linux kernel programming, we will never lost in knowledge forest.</p>
+<pre><code>UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2
+</code></pre>
 
-<p>I took one year to finish this challenge. I&rsquo;m number 84 to pass it.</p>
-
-<p>Now send email and atttend challenge, you will open the linux kernel programming door.</p>
+<ul>
+<li>Reboot PC.</li>
+</ul>
 </p>
 
         </article>
@@ -130,13 +133,13 @@
       
       <li><a href="http://sunwxg.github.io/tags/linux">linux</a></li>
       
-      <li><a href="http://sunwxg.github.io/tags/sun-pinyin">sun-pinyin</a></li>
-      
       <li><a href="http://sunwxg.github.io/tags/driver">driver</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
+      
+      <li><a href="http://sunwxg.github.io/tags/sun-pinyin">sun-pinyin</a></li>
       
     </ul>
   </div>

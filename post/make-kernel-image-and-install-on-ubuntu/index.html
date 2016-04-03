@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>Endyptula Challenge Passed - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="Endyptula Challenge Passed - Sun Wang&#39;s Blog">
+    <title>Make new kernel image and install on Ubuntu - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="Make new kernel image and install on Ubuntu - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
+    <meta property="og:url" content="http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/">
     
     
 </head>
@@ -55,10 +55,10 @@
 
         <article class="single well" itemscope="itemscope" itemtype="http://schema.org/Article">
             <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
-            <meta itemprop="dateModified" content="2016-03-24T00:00:00&#43;00:00">
-            <meta itemprop="headline" content="Endyptula Challenge Passed">
-            <meta itemprop="description" content="What is Endyptula Challenge? You can get answer at http://www.eudyptula-challenge.org/. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge. When we learn linux kernel programming, there are many books we can read. &lt;Linux Kernel Development&gt; &lt;Linux Device Drivers&gt; &lt;Understanding the Linux Kernel, Third Edition&gt; But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.">
-            <meta itemprop="url" content="http://sunwxg.github.io/post/Eudyptula-Challenge/">
+            <meta itemprop="dateModified" content="2016-04-03T00:00:00&#43;00:00">
+            <meta itemprop="headline" content="Make new kernel image and install on Ubuntu">
+            <meta itemprop="description" content="If you want to use latest version kernel on your Ubuntu, you need to compile kernel source code by yourself. Let&rsquo;s make and install it. Download the latest version kernel source code from https://www.kernel.org/. Untar the downloaded files. tar xf linux-4.5.tar.xz Prepare .config file. cd linux-4.5 cp /boot/config-`uname -r` ./.config make menuconfig Select Load, load .config file. Select Save, save .config file. Select Exit. Make kernel image. sudo make-kpkg --initrd kernel_image Install kernel image.">
+            <meta itemprop="url" content="http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/">
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
                 <meta itemprop="width" content="800">
@@ -77,9 +77,9 @@
             </div>
 
             <header class="article-header">
-                <h1>Endyptula Challenge Passed</h1>
+                <h1>Make new kernel image and install on Ubuntu</h1>
                 
-                <time itemprop="datePublished" pubdate="pubdate" datetime="2016-03-24T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on March 24, 2016</time>
+                <time itemprop="datePublished" pubdate="pubdate" datetime="2016-04-03T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on April 3, 2016</time>
                 
 
                 <div class="fa fa-tags">
@@ -88,25 +88,52 @@
 
             </header>
 
-            <p><p>What is Endyptula Challenge? You can get answer at <a href="http://www.eudyptula-challenge.org/">http://www.eudyptula-challenge.org/</a>. If you want to learn linux kernel programming or linux device driver programming, I highly recommend you to finish this challenge.</p>
-
-<p>When we learn linux kernel programming, there are many books we can read.</p>
+            <p><p>If you want to use latest version kernel on your Ubuntu, you need to compile kernel source code by yourself. Let&rsquo;s make and install it.</p>
 
 <ul>
-<li><a href="http://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468/ref=sr_1_1?ie=UTF8&amp;qid=1458812440&amp;sr=8-1&amp;keywords=linux+kernel+development">&lt;Linux Kernel Development&gt;</a></li>
-<li><a href="http://www.amazon.com/Linux-Device-Drivers-3rd-Edition/dp/0596005903/ref=pd_bxgy_14_3?ie=UTF8&amp;refRID=1TXM04ZY6GN1PZXPFCCF">&lt;Linux Device Drivers&gt;</a></li>
-<li><a href="http://www.amazon.com/Understanding-Linux-Kernel-Third-Edition/dp/0596005652/ref=pd_bxgy_14_2?ie=UTF8&amp;refRID=16X7YFZVM2P5F6A4RY1H">&lt;Understanding the Linux Kernel, Third Edition&gt;</a></li>
+<li><p>Download the latest version kernel source code from <a href="https://www.kernel.org/">https://www.kernel.org/</a>.</p></li>
+
+<li><p>Untar the downloaded files.</p></li>
 </ul>
 
-<p>But for linux kernel programming, there are also many information and knowledge to understand. We always lost in these books.</p>
+<pre><code>tar xf linux-4.5.tar.xz
+</code></pre>
 
-<p>Eudyptula Challenge is a good guider to take you walking through the linux kernel programming forest. Create &ldquo;Hello World&rdquo; module, compile linux kernel source code, create real linux kernel patch and send it out&hellip;</p>
+<ul>
+<li>Prepare <code>.config</code> file.</li>
+</ul>
 
-<p>From 20 tasks we can learn many useful knowledge. Like we find a way in the forest to learn linux kernel programming, we will never lost in knowledge forest.</p>
+<pre><code>cd linux-4.5
+cp /boot/config-`uname -r` ./.config
+make menuconfig
+</code></pre>
 
-<p>I took one year to finish this challenge. I&rsquo;m number 84 to pass it.</p>
+<p>Select <code>Load</code>, load <code>.config</code> file.</p>
 
-<p>Now send email and atttend challenge, you will open the linux kernel programming door.</p>
+<p>Select <code>Save</code>, save <code>.config</code> file.</p>
+
+<p>Select <code>Exit</code>.</p>
+
+<ul>
+<li>Make kernel image.</li>
+</ul>
+
+<pre><code>sudo make-kpkg --initrd kernel_image
+</code></pre>
+
+<ul>
+<li>Install kernel image.</li>
+</ul>
+
+<pre><code>sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+</code></pre>
+
+<p>Now reboot PC, system will use the new kernel.</p>
+
+<p>If you want to remove one kernel image package, then</p>
+
+<pre><code>sudo dpkg --purge linux-image-4.5.0+
+</code></pre>
 </p>
 
         </article>
@@ -130,13 +157,13 @@
       
       <li><a href="http://sunwxg.github.io/tags/linux">linux</a></li>
       
+      <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
+      
       <li><a href="http://sunwxg.github.io/tags/sun-pinyin">sun-pinyin</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/driver">driver</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
-      
-      <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
       
     </ul>
   </div>

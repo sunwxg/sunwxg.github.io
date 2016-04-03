@@ -6,8 +6,94 @@
     <description>Recent content in Linux on Sun Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://sunwxg.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Make new kernel image and install on Ubuntu</title>
+      <link>http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/</guid>
+      <description>&lt;p&gt;If you want to use latest version kernel on your Ubuntu, you need to compile kernel source code by yourself. Let&amp;rsquo;s make and install it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Download the latest version kernel source code from &lt;a href=&#34;https://www.kernel.org/&#34;&gt;https://www.kernel.org/&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Untar the downloaded files.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;tar xf linux-4.5.tar.xz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prepare &lt;code&gt;.config&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;cd linux-4.5
+cp /boot/config-`uname -r` ./.config
+make menuconfig
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Select &lt;code&gt;Load&lt;/code&gt;, load &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Select &lt;code&gt;Save&lt;/code&gt;, save &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Select &lt;code&gt;Exit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make kernel image.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo make-kpkg --initrd kernel_image
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install kernel image.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now reboot PC, system will use the new kernel.&lt;/p&gt;
+
+&lt;p&gt;If you want to remove one kernel image package, then&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dpkg --purge linux-image-4.5.0+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mount home disk by fstab file</title>
+      <link>http://sunwxg.github.io/post/mount-home-disk-in-fstab/</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/mount-home-disk-in-fstab/</guid>
+      <description>&lt;p&gt;I want to mount disk &lt;code&gt;/dev/sda3&lt;/code&gt; to be &lt;code&gt;/home&lt;/code&gt;.
+I need to add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Find &lt;code&gt;/dev/sda3&lt;/code&gt; disk &lt;code&gt;UUID&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ lsblk -o +UUID /dev/sda3
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT UUID
+sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reboot PC.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Ubuntu 15.10 Sunpinyin Install</title>
