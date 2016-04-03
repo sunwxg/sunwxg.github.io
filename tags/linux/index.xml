@@ -10,6 +10,28 @@
     <atom:link href="http://sunwxg.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Create cscope log for linux kernel source code</title>
+      <link>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</link>
+      <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</guid>
+      <description>&lt;p&gt;I often use cscope to browse linux kernel source code in Vim. It is very convenient.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make cscope
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can use &lt;code&gt;make cscope&lt;/code&gt; to generate cscope database for linux kernel source code.&lt;/p&gt;
+
+&lt;p&gt;But if we only use &lt;code&gt;make cscope&lt;/code&gt;, we can&amp;rsquo;t use cscope database in Vim. Because in &lt;code&gt;cscope.files&lt;/code&gt;, the file path is relative path.&lt;/p&gt;
+
+&lt;p&gt;We should use absolute file path. So we need to add one parameter &lt;code&gt;O=.&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make O=. cscope
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Make new kernel image and install on Ubuntu</title>
       <link>http://sunwxg.github.io/post/make-kernel-image-and-install-on-ubuntu/</link>
       <pubDate>Sun, 03 Apr 2016 00:00:00 +0000</pubDate>

@@ -17,12 +17,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
 
     
-    <title>Mount home disk by fstab file - Sun Wang&#39;s Blog</title>
-    <meta property='og:title' content="Mount home disk by fstab file - Sun Wang&#39;s Blog">
+    <title>Create cscope log for linux kernel source code - Sun Wang&#39;s Blog</title>
+    <meta property='og:title' content="Create cscope log for linux kernel source code - Sun Wang&#39;s Blog">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://sunwxg.github.io/post/mount-home-disk-in-fstab/">
+    <meta property="og:url" content="http://sunwxg.github.io/post/make-kernel-source-code-cscope/">
     
     
 </head>
@@ -56,9 +56,9 @@
         <article class="single well" itemscope="itemscope" itemtype="http://schema.org/Article">
             <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
             <meta itemprop="dateModified" content="2016-04-03T00:00:00&#43;00:00">
-            <meta itemprop="headline" content="Mount home disk by fstab file">
-            <meta itemprop="description" content="I want to mount disk /dev/sda3 to be /home. I need to add one line in /etc/fstab file. Find /dev/sda3 disk UUID. $ lsblk -o &#43;UUID /dev/sda3 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT UUID sda3 8:3 0 203.1G 0 part /home c0b3529a-c9ef-4c92-88c2-b278a7c4111b Add one line in /etc/fstab file. UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2 Reboot PC.">
-            <meta itemprop="url" content="http://sunwxg.github.io/post/mount-home-disk-in-fstab/">
+            <meta itemprop="headline" content="Create cscope log for linux kernel source code">
+            <meta itemprop="description" content="I often use cscope to browse linux kernel source code in Vim. It is very convenient. make cscope We can use make cscope to generate cscope database for linux kernel source code. But if we only use make cscope, we can&rsquo;t use cscope database in Vim. Because in cscope.files, the file path is relative path. We should use absolute file path. So we need to add one parameter O=. make O=.">
+            <meta itemprop="url" content="http://sunwxg.github.io/post/make-kernel-source-code-cscope/">
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
                 <meta itemprop="width" content="800">
@@ -77,7 +77,7 @@
             </div>
 
             <header class="article-header">
-                <h1>Mount home disk by fstab file</h1>
+                <h1>Create cscope log for linux kernel source code</h1>
                 
                 <time itemprop="datePublished" pubdate="pubdate" datetime="2016-04-03T00:00:00&#43;00:00"><i class="fa fa-clock-o"></i> Posted on April 3, 2016</time>
                 
@@ -88,28 +88,19 @@
 
             </header>
 
-            <p><p>I want to mount disk <code>/dev/sda3</code> to be <code>/home</code>.
-I need to add one line in <code>/etc/fstab</code> file.</p>
+            <p><p>I often use cscope to browse linux kernel source code in Vim. It is very convenient.</p>
 
-<ul>
-<li>Find <code>/dev/sda3</code> disk <code>UUID</code>.</li>
-</ul>
-
-<pre><code>$ lsblk -o +UUID /dev/sda3
-NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT UUID
-sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
+<pre><code>make cscope
 </code></pre>
 
-<ul>
-<li>Add one line in <code>/etc/fstab</code> file.</li>
-</ul>
+<p>We can use <code>make cscope</code> to generate cscope database for linux kernel source code.</p>
 
-<pre><code>UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2
+<p>But if we only use <code>make cscope</code>, we can&rsquo;t use cscope database in Vim. Because in <code>cscope.files</code>, the file path is relative path.</p>
+
+<p>We should use absolute file path. So we need to add one parameter <code>O=.</code></p>
+
+<pre><code>make O=. cscope
 </code></pre>
-
-<ul>
-<li>Reboot PC.</li>
-</ul>
 </p>
 
         </article>
@@ -133,13 +124,13 @@ sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
       
       <li><a href="http://sunwxg.github.io/tags/linux">linux</a></li>
       
+      <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
+      
       <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/sun-pinyin">sun-pinyin</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/driver">driver</a></li>
-      
-      <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
       
     </ul>
   </div>
