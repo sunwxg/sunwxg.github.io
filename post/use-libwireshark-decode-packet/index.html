@@ -57,7 +57,7 @@
             <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://sunwxg.github.io/"/>
             <meta itemprop="dateModified" content="2016-03-23T00:00:00&#43;00:00">
             <meta itemprop="headline" content="Use libwireshark decoding PCAP files">
-            <meta itemprop="description" content="We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library. First do some initial work. init_process_policies(); epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL); /* cfile is a global varible */ cap_file_init(&amp;cfile); cfile.filename = filename; cfile.count = 0; cfile.epan = epan_new(); cfile.epan-&gt;data = &amp;cfile; cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts; Second read and decode packet. epan_dissect_t *edt; /* all the decoded data store in struct edt */ read_packet(&amp;edt); Print out packet.">
+            <meta itemprop="description" content="We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library. First do some initial work. init_process_policies(); epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL); /* cfile is a global varible */ cap_file_init(&amp;cfile); cfile.filename = filename; cfile.count = 0; cfile.epan = epan_new(); cfile.epan-&gt;data = &amp;cfile; cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts; Second read and decode packet. Function wtap_read read one packet from file.">
             <meta itemprop="url" content="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                 <meta itemprop="url" content="http://sunwxg.github.io/images/default.jpg" />
@@ -108,10 +108,36 @@ cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
 
 <p>Second read and decode packet.</p>
 
-<pre><code class="language-C">epan_dissect_t *edt;
+<p>Function <code>wtap_read</code> read one packet from file.</p>
 
-/* all the decoded data store in struct edt */
-read_packet(&amp;edt);
+<p>Function <code>epan_dissect_new</code> create a new <code>struct epan_dissect_t</code>.</p>
+
+<p>Function <code>epan_dissect_run</code> decode packet.</p>
+
+<pre><code class="language-C">if (wtap_read(cfile.wth, &amp;err, &amp;err_info, &amp;data_offset)) {
+
+	cfile.count++;
+
+	frame_data fdlocal;
+	frame_data_init(&amp;fdlocal, cfile.count, whdr, data_offset, cum_bytes);
+
+	edt = epan_dissect_new(cfile.epan, TRUE, TRUE);
+
+	frame_data_set_before_dissect(&amp;fdlocal, &amp;cfile.elapsed_time, &amp;cfile.ref, cfile.prev_dis);
+	cfile.ref = &amp;fdlocal;
+
+	epan_dissect_run(edt, cfile.cd_t, &amp;(cfile.phdr), frame_tvbuff_new(&amp;fdlocal, buf), &amp;fdlocal, &amp;cfile.cinfo);
+
+	frame_data_set_after_dissect(&amp;fdlocal, &amp;cum_bytes);
+	cfile.prev_cap = cfile.prev_dis = frame_data_sequence_add(cfile.frames, &amp;fdlocal);
+
+	//free space
+	frame_data_destroy(&amp;fdlocal);
+
+	*edt_r = edt;
+	return TRUE;
+}
+return FALSE;
 </code></pre>
 
 <p>Print out packet.</p>
@@ -163,9 +189,9 @@ epan_cleanup();
       
       <li><a href="http://sunwxg.github.io/tags/linux">linux</a></li>
       
-      <li><a href="http://sunwxg.github.io/tags/kernel">kernel</a></li>
-      
       <li><a href="http://sunwxg.github.io/tags/wireshark">wireshark</a></li>
+      
+      <li><a href="http://sunwxg.github.io/tags/kernel">kernel</a></li>
       
       <li><a href="http://sunwxg.github.io/tags/jekyll">jekyll</a></li>
       
