@@ -22,9 +22,8 @@ the Icon and fonts is too small to look. I changed some display setting to look 
 &lt;ul&gt;
 &lt;li&gt;Install tweak-tool.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install gnome-tweak-tool
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install gnome-tweak-tool
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Change window scaling to &lt;code&gt;2&lt;/code&gt;.&lt;/li&gt;
@@ -55,42 +54,38 @@ I change font scaling to &lt;code&gt;1.2&lt;/code&gt;.&lt;/li&gt;
       <guid>http://sunwxg.github.io/post/libwireshark-decoded-data/</guid>
       <description>&lt;p&gt;When using libwireshark library decoding packet, the decoded data is stored in &lt;code&gt;struct epan_dissect&lt;/code&gt;.
 We can browse this struct to search or display packet data.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;struct epan_dissect {
-	struct epan_session *session;
-	tvbuff_t	*tvb;
-	proto_tree	*tree;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; epan_dissect {
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; epan_session &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;session;
+	tvbuff_t	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;tvb;
+	proto_tree	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;tree;
 	packet_info	pi;
 };
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code&gt;epan_dissect-&amp;gt;tree&lt;/code&gt; points to data struct tree.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;typedef proto_node proto_tree;
-typedef struct _proto_node {
-	struct _proto_node *first_child;
-	struct _proto_node *last_child;
-	struct _proto_node *next;
-	struct _proto_node *parent;
-	field_info  *finfo;
-	tree_data_t *tree_data;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; proto_node proto_tree;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _proto_node {
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _proto_node &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;first_child;
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _proto_node &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;last_child;
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _proto_node &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;next;
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _proto_node &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;parent;
+	field_info  &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;finfo;
+	tree_data_t &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;tree_data;
 } proto_node;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;typedef struct field_info {
-	header_field_info	*hfinfo; /**&amp;lt; pointer to registered field information */
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; field_info {
+	header_field_info	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;hfinfo; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/**&amp;lt; pointer to registered field information */&lt;/span&gt;
 	...
 	fvalue_t		 value;
 } field_info;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;typedef struct _header_field_info header_field_info;
-struct _header_field_info {
-	const char	*name;    /**&amp;lt; [FIELDNAME] full name of this field */
-	const char	*abbrev;  /**&amp;lt; [FIELDABBREV] abbreviated name of this field */
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _header_field_info header_field_info;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; _header_field_info {
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;name;    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/**&amp;lt; [FIELDNAME] full name of this field */&lt;/span&gt;
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;abbrev;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/**&amp;lt; [FIELDABBREV] abbreviated name of this field */&lt;/span&gt;
 	...
 };
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Every node of tree stores one information of packet.
 The information includes name and value.
@@ -100,42 +95,40 @@ For example if we want to find IP source address, the name is &lt;code&gt;ip.src
 
 &lt;p&gt;The value is stored in &lt;code&gt;epan_dissect-&amp;gt;tree-&amp;gt;finfo-&amp;gt;value&lt;/code&gt;.
 We can use function &lt;code&gt;fvalue_to_string_repr&lt;/code&gt; to convert value to display format.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;name &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;finfo&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;hfinfo&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;abbrev;
 
-&lt;pre&gt;&lt;code&gt;const char *name = node-&amp;gt;finfo-&amp;gt;hfinfo-&amp;gt;abbrev;
-
-fvalue_t fv = node-&amp;gt;finfo-&amp;gt;value;
-char *value = fvalue_to_string_repr(&amp;amp;fv, FTREPR_DISPLAY, NULL);
-&lt;/code&gt;&lt;/pre&gt;
+fvalue_t fv &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; node&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;finfo&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;value;
+&lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;value &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; fvalue_to_string_repr(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fv, FTREPR_DISPLAY, &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;After browsing the node of tree, we can print out the data of packet like this.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[ip]
-. [ip.version] 4
-. [ip.hdr_len] 20
-. [ip.dsfield] 0
-. . [ip.dsfield.dscp] 0
-. . [ip.dsfield.ecn] 0
-. [ip.len] 160
-. [ip.id] 24538
-. [ip.flags] 0
-. . [ip.flags.rb] 0
-. . [ip.flags.df] 0
-. . [ip.flags.mf] 0
-. [ip.frag_offset] 0
-. [ip.ttl] 64
-. [ip.proto] 132
-. [ip.checksum] 15303
-. . [ip.checksum_good] 0
-. . [ip.checksum_bad] 0
-. [ip.src] 10.128.228.50
-. [ip.addr] 10.128.228.50
-. [ip.src_host] 10.128.228.50
-. [ip.host] 10.128.228.50
-. [ip.dst] 10.128.229.6
-. [ip.addr] 10.128.229.6
-. [ip.dst_host] 10.128.229.6
-. [ip.host] 10.128.229.6
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.version&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 4
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.hdr_len&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 20
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.dsfield&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.dsfield.dscp&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.dsfield.ecn&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.len&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 160
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.id&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 24538
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.flags&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.flags.rb&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.flags.df&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.flags.mf&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.frag_offset&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.ttl&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 64
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.proto&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 132
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.checksum&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 15303
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.checksum_good&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. . &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.checksum_bad&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 0
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.src&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.228.50
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.addr&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.228.50
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.src_host&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.228.50
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.host&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.228.50
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.dst&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.229.6
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.addr&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.229.6
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.dst_host&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.229.6
+. &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;ip.host&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; 10.128.229.6
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You can get full source code from &lt;a href=&#34;https://github.com/sunwxg/libwireshark_decoded_data.git&#34;&gt;https://github.com/sunwxg/libwireshark_decoded_data.git&lt;/a&gt;.
 If you want know how libwireshark decodes packet, you can referece another blog &lt;a href=&#34;http://sunwxg.github.io/post/use-libwireshark-decode-packet/&#34;&gt;Use libwireshark decoding PCAP files&lt;/a&gt;&lt;/p&gt;
@@ -149,18 +142,16 @@ If you want know how libwireshark decodes packet, you can referece another blog 
       
       <guid>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</guid>
       <description>&lt;p&gt;I often use cscope to browse linux kernel source code in Vim. It is very convenient.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;make cscope
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;make cscope
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;We can use &lt;code&gt;make cscope&lt;/code&gt; to generate cscope database for linux kernel source code.&lt;/p&gt;
 
 &lt;p&gt;But if we only use &lt;code&gt;make cscope&lt;/code&gt;, we can&amp;rsquo;t use cscope database in Vim. Because in &lt;code&gt;cscope.files&lt;/code&gt;, the file path is relative path.&lt;/p&gt;
 
 &lt;p&gt;We should use absolute file path. So we need to add one parameter &lt;code&gt;O=.&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;make O=. cscope
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;make &lt;span style=&#34;color: #19177C&#34;&gt;O&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;. cscope
+&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
@@ -177,18 +168,16 @@ If you want know how libwireshark decodes packet, you can referece another blog 
 
 &lt;li&gt;&lt;p&gt;Untar the downloaded files.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;tar xf linux-4.5.tar.xz
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;tar xf linux-4.5.tar.xz
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Prepare &lt;code&gt;.config&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;cd linux-4.5
-cp /boot/config-`uname -r` ./.config
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; linux-4.5
+cp /boot/config-&lt;span style=&#34;color: #BA2121&#34;&gt;`&lt;/span&gt;uname -r&lt;span style=&#34;color: #BA2121&#34;&gt;`&lt;/span&gt; ./.config
 make menuconfig
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Select &lt;code&gt;Load&lt;/code&gt;, load &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
 
@@ -199,23 +188,20 @@ make menuconfig
 &lt;ul&gt;
 &lt;li&gt;Make kernel image.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo make-kpkg --initrd kernel_image
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo make-kpkg --initrd kernel_image
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install kernel image.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now reboot PC, system will use the new kernel.&lt;/p&gt;
 
 &lt;p&gt;If you want to remove one kernel image package, then&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg --purge linux-image-4.5.0+
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo dpkg --purge linux-image-4.5.0+
+&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
@@ -231,18 +217,16 @@ I need to add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Find &lt;code&gt;/dev/sda3&lt;/code&gt; disk &lt;code&gt;UUID&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ lsblk -o +UUID /dev/sda3
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ lsblk -o +UUID /dev/sda3
 NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT UUID
-sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
-&lt;/code&gt;&lt;/pre&gt;
+sda3   8:3    &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; 203.1G  &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #19177C&#34;&gt;UUID&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; 2
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot PC.&lt;/li&gt;
@@ -264,9 +248,8 @@ Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Supp
 
 &lt;li&gt;&lt;p&gt;Active fcitx input frame work&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;im-config
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;im-config
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Open &lt;code&gt;System Setting&lt;/code&gt;-&amp;gt; &lt;code&gt;Language Support&lt;/code&gt;. At &lt;code&gt;Keyboard input method system:&lt;/code&gt;, select &lt;code&gt;fcitx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
@@ -289,8 +272,7 @@ Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Supp
       <description>
 
 &lt;p&gt;HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&amp;rsquo;t work. Use &lt;code&gt;ifconfig&lt;/code&gt; can&amp;rsquo;t see wireless card, only see lo.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ifconfig
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ ifconfig
 lo        Link encap:Local Loopback
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
@@ -298,14 +280,13 @@ lo        Link encap:Local Loopback
           RX packets:2191 errors:0 dropped:0 overruns:0 frame:0
           TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
-          RX bytes:191462 (191.4 KB)  TX bytes:191462 (191.4 KB)
-&lt;/code&gt;&lt;/pre&gt;
+          RX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;  TX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Use &lt;code&gt;lspci&lt;/code&gt; can find wireless card.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ lspci |grep Network
-01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ lspci |grep Network
+01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;rev 01&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&#34;install-driver:ce1783a100b0daa7a7d58e9ac1bda53f&#34;&gt;Install Driver&lt;/h3&gt;
 
@@ -314,40 +295,35 @@ lo        Link encap:Local Loopback
 
 &lt;li&gt;&lt;p&gt;Untar the downloaded file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir bcm
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;mkdir bcm
 tar xzf hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz -C bcm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Build module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;cd bcm
-make API=CFG80211
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; bcm
+make &lt;span style=&#34;color: #19177C&#34;&gt;API&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;CFG80211
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo make install
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo make install
 depmod
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Unload bcma module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;blacklist bcma&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;blacklist bcma&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot laptop&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo reboot
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now WiFi work well.&lt;/p&gt;
 
@@ -392,20 +368,19 @@ depmod
       <description>&lt;p&gt;We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library.&lt;/p&gt;
 
 &lt;p&gt;First do some initial work.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;init_process_policies();
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;init_process_policies();
+epan_init(register_all_protocols, register_all_protocol_handoffs, &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;, &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;);
 
-epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/* cfile is a global varible */&lt;/span&gt;
+cap_file_init(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cfile);
+cfile.filename &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; filename;
 
-/* cfile is a global varible */
-cap_file_init(&amp;amp;cfile);
-cfile.filename = filename;
-
-cfile.count = 0;
-cfile.epan = epan_new();
-cfile.epan-&amp;gt;data = &amp;amp;cfile;
-cfile.epan-&amp;gt;get_frame_ts = tshark_get_frame_ts;
-&lt;/code&gt;&lt;/pre&gt;
+cfile.count &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+cfile.epan &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; epan_new();
+cfile.epan&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;data &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cfile;
+cfile.epan&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;get_frame_ts &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; tshark_get_frame_ts;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Second read and decode packet.&lt;/p&gt;
 
@@ -414,57 +389,54 @@ cfile.epan-&amp;gt;get_frame_ts = tshark_get_frame_ts;
 &lt;p&gt;Function &lt;code&gt;epan_dissect_new&lt;/code&gt; create a new &lt;code&gt;struct epan_dissect_t&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Function &lt;code&gt;epan_dissect_run&lt;/code&gt; decode packet.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (wtap_read(cfile.wth, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;err, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;err_info, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;data_offset)) {
 
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;if (wtap_read(cfile.wth, &amp;amp;err, &amp;amp;err_info, &amp;amp;data_offset)) {
-
-	cfile.count++;
+	cfile.count&lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;;
 
 	frame_data fdlocal;
-	frame_data_init(&amp;amp;fdlocal, cfile.count, whdr, data_offset, cum_bytes);
+	frame_data_init(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal, cfile.count, whdr, data_offset, cum_bytes);
 
-	edt = epan_dissect_new(cfile.epan, TRUE, TRUE);
+	edt &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; epan_dissect_new(cfile.epan, TRUE, TRUE);
 
-	frame_data_set_before_dissect(&amp;amp;fdlocal, &amp;amp;cfile.elapsed_time, &amp;amp;cfile.ref, cfile.prev_dis);
-	cfile.ref = &amp;amp;fdlocal;
+	frame_data_set_before_dissect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cfile.elapsed_time, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cfile.ref, cfile.prev_dis);
+	cfile.ref &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal;
 
-	epan_dissect_run(edt, cfile.cd_t, &amp;amp;(cfile.phdr), frame_tvbuff_new(&amp;amp;fdlocal, buf), &amp;amp;fdlocal, &amp;amp;cfile.cinfo);
+	epan_dissect_run(edt, cfile.cd_t, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;(cfile.phdr), frame_tvbuff_new(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal, buf), &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cfile.cinfo);
 
-	frame_data_set_after_dissect(&amp;amp;fdlocal, &amp;amp;cum_bytes);
-	cfile.prev_cap = cfile.prev_dis = frame_data_sequence_add(cfile.frames, &amp;amp;fdlocal);
+	frame_data_set_after_dissect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;cum_bytes);
+	cfile.prev_cap &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; cfile.prev_dis &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; frame_data_sequence_add(cfile.frames, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal);
 
-	//free space
-	frame_data_destroy(&amp;amp;fdlocal);
+	&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//free space&lt;/span&gt;
+	frame_data_destroy(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;fdlocal);
 
-	*edt_r = edt;
-	return TRUE;
+	&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;edt_r &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; edt;
+	&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; TRUE;
 }
-return FALSE;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; FALSE;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Print out packet.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;/* print out as XML format */
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/* print out as XML format */&lt;/span&gt;
 proto_tree_write_pdml(edt, stdout);
 
-/* print out as TEXT format */
-proto_tree_print(&amp;amp;print_args, edt, print_stream);
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/* print out as TEXT format */&lt;/span&gt;
+proto_tree_print(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;print_args, edt, print_stream);
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Release memory.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;epan_dissect_free(edt);
-edt = NULL;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;epan_dissect_free(edt);
+edt &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;;
 
 free_frame_data_sequence(cfile.frames);
-cfile.frames = NULL;
+cfile.frames &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;;
 
 wtap_close(cfile.wth);
-cfile.wth = NULL;
+cfile.wth &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;NULL&lt;/span&gt;;
 
 epan_free(cfile.epan);
 
 epan_cleanup();
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;My source code is on &lt;a href=&#34;https://github.com/sunwxg/decode_by_libwireshark&#34;&gt;github&lt;/a&gt;. You can follow the guide to run and debug.&lt;/p&gt;
 </description>
@@ -483,22 +455,19 @@ epan_cleanup();
 &lt;p&gt;Following the &lt;a href=&#34;https://pages.github.com/&#34;&gt;https://pages.github.com/&lt;/a&gt; make a repository.&lt;/p&gt;
 
 &lt;h2 id=&#34;install-jekyll:94d627e12f394429874ffbc569f8f23a&#34;&gt;Install Jekyll&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install jekyll
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apt-get install jekyll
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&#34;create-new-jekyll-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Create new jekyll site&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
-cd sunwxg.github.io
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
+&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; sunwxg.github.io
 jekyll new .
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&#34;browse-your-blog-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Browse your blog site&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;jekyll build
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;jekyll build
 jekyll serve
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Browse &lt;a href=&#34;http://localhost:4000&#34;&gt;http://localhost:4000&lt;/a&gt;&lt;/p&gt;
 
@@ -507,9 +476,8 @@ jekyll serve
 &lt;p&gt;Reference jekyll &lt;a href=&#34;https://jekyllrb.com/docs/configuration/&#34;&gt;manual&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;push-to-remote-repository:94d627e12f394429874ffbc569f8f23a&#34;&gt;Push to remote repository&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;git push
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Browse &lt;a href=&#34;http://sunwxg.github.io&#34;&gt;http//sunwxg.github.io&lt;/a&gt;&lt;/p&gt;
 </description>

@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.15" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/bootstrap-3.3.6.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/font-awesome-4.5.0.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/theme_style.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.6.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.5.0.min.css">
+    <link rel="stylesheet" href="/css/theme_style.css">
     
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
@@ -42,10 +42,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://sunwxg.github.io/">Sun Wang&#39;s Blog</a>
+            <a class="navbar-brand" href="/">Sun Wang&#39;s Blog</a>
           </div>
 
-	<a class="navbar-brand navbar-right" href="http://sunwxg.github.io/about/">About</a>
+	<a class="navbar-brand navbar-right" href="/about/">About</a>
 	<a class="navbar-brand navbar-right" href="https://github.com/sunwxg">Github</a>
       </nav>
 
@@ -89,18 +89,16 @@
             </header>
 
             <p><p>I often use cscope to browse linux kernel source code in Vim. It is very convenient.</p>
-
-<pre><code>make cscope
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>make cscope
+</pre></div>
 
 <p>We can use <code>make cscope</code> to generate cscope database for linux kernel source code.</p>
 
 <p>But if we only use <code>make cscope</code>, we can&rsquo;t use cscope database in Vim. Because in <code>cscope.files</code>, the file path is relative path.</p>
 
 <p>We should use absolute file path. So we need to add one parameter <code>O=.</code></p>
-
-<pre><code>make O=. cscope
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>make <span style="color: #19177C">O</span><span style="color: #666666">=</span>. cscope
+</pre></div>
 </p>
 
         </article>
@@ -154,8 +152,8 @@
             </footer>
         </div>
 
-        <script src="http://sunwxg.github.io/js/jquery-2.2.0.min.js"></script>
-        <script src="http://sunwxg.github.io/js/bootstrap-3.3.6.min.js"></script>
+        <script src="/js/jquery-2.2.0.min.js"></script>
+        <script src="/js/bootstrap-3.3.6.min.js"></script>
     </body>
 </html>
 

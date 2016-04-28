@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.15" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/bootstrap-3.3.6.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/font-awesome-4.5.0.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/theme_style.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.6.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.5.0.min.css">
+    <link rel="stylesheet" href="/css/theme_style.css">
     
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
@@ -42,10 +42,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://sunwxg.github.io/">Sun Wang&#39;s Blog</a>
+            <a class="navbar-brand" href="/">Sun Wang&#39;s Blog</a>
           </div>
 
-	<a class="navbar-brand navbar-right" href="http://sunwxg.github.io/about/">About</a>
+	<a class="navbar-brand navbar-right" href="/about/">About</a>
 	<a class="navbar-brand navbar-right" href="https://github.com/sunwxg">Github</a>
       </nav>
 
@@ -95,18 +95,16 @@
 
 <li><p>Untar the downloaded files.</p></li>
 </ul>
-
-<pre><code>tar xf linux-4.5.tar.xz
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tar xf linux-4.5.tar.xz
+</pre></div>
 
 <ul>
 <li>Prepare <code>.config</code> file.</li>
 </ul>
-
-<pre><code>cd linux-4.5
-cp /boot/config-`uname -r` ./.config
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000">cd</span> linux-4.5
+cp /boot/config-<span style="color: #BA2121">`</span>uname -r<span style="color: #BA2121">`</span> ./.config
 make menuconfig
-</code></pre>
+</pre></div>
 
 <p>Select <code>Load</code>, load <code>.config</code> file.</p>
 
@@ -117,23 +115,20 @@ make menuconfig
 <ul>
 <li>Make kernel image.</li>
 </ul>
-
-<pre><code>sudo make-kpkg --initrd kernel_image
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo make-kpkg --initrd kernel_image
+</pre></div>
 
 <ul>
 <li>Install kernel image.</li>
 </ul>
-
-<pre><code>sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+</pre></div>
 
 <p>Now reboot PC, system will use the new kernel.</p>
 
 <p>If you want to remove one kernel image package, then</p>
-
-<pre><code>sudo dpkg --purge linux-image-4.5.0+
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sudo dpkg --purge linux-image-4.5.0+
+</pre></div>
 </p>
 
         </article>
@@ -187,8 +182,8 @@ make menuconfig
             </footer>
         </div>
 
-        <script src="http://sunwxg.github.io/js/jquery-2.2.0.min.js"></script>
-        <script src="http://sunwxg.github.io/js/bootstrap-3.3.6.min.js"></script>
+        <script src="/js/jquery-2.2.0.min.js"></script>
+        <script src="/js/bootstrap-3.3.6.min.js"></script>
     </body>
 </html>
 

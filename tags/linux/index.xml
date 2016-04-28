@@ -22,9 +22,8 @@ the Icon and fonts is too small to look. I changed some display setting to look 
 &lt;ul&gt;
 &lt;li&gt;Install tweak-tool.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get install gnome-tweak-tool
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install gnome-tweak-tool
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Change window scaling to &lt;code&gt;2&lt;/code&gt;.&lt;/li&gt;
@@ -54,18 +53,16 @@ I change font scaling to &lt;code&gt;1.2&lt;/code&gt;.&lt;/li&gt;
       
       <guid>http://sunwxg.github.io/post/make-kernel-source-code-cscope/</guid>
       <description>&lt;p&gt;I often use cscope to browse linux kernel source code in Vim. It is very convenient.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;make cscope
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;make cscope
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;We can use &lt;code&gt;make cscope&lt;/code&gt; to generate cscope database for linux kernel source code.&lt;/p&gt;
 
 &lt;p&gt;But if we only use &lt;code&gt;make cscope&lt;/code&gt;, we can&amp;rsquo;t use cscope database in Vim. Because in &lt;code&gt;cscope.files&lt;/code&gt;, the file path is relative path.&lt;/p&gt;
 
 &lt;p&gt;We should use absolute file path. So we need to add one parameter &lt;code&gt;O=.&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;make O=. cscope
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;make &lt;span style=&#34;color: #19177C&#34;&gt;O&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;. cscope
+&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
@@ -82,18 +79,16 @@ I change font scaling to &lt;code&gt;1.2&lt;/code&gt;.&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Untar the downloaded files.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;tar xf linux-4.5.tar.xz
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;tar xf linux-4.5.tar.xz
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Prepare &lt;code&gt;.config&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;cd linux-4.5
-cp /boot/config-`uname -r` ./.config
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; linux-4.5
+cp /boot/config-&lt;span style=&#34;color: #BA2121&#34;&gt;`&lt;/span&gt;uname -r&lt;span style=&#34;color: #BA2121&#34;&gt;`&lt;/span&gt; ./.config
 make menuconfig
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Select &lt;code&gt;Load&lt;/code&gt;, load &lt;code&gt;.config&lt;/code&gt; file.&lt;/p&gt;
 
@@ -104,23 +99,20 @@ make menuconfig
 &lt;ul&gt;
 &lt;li&gt;Make kernel image.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo make-kpkg --initrd kernel_image
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo make-kpkg --initrd kernel_image
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install kernel image.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo dpkg -i ../linux-image-4.5.0_4.5.0-10.00.Custom_amd64.deb
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now reboot PC, system will use the new kernel.&lt;/p&gt;
 
 &lt;p&gt;If you want to remove one kernel image package, then&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dpkg --purge linux-image-4.5.0+
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo dpkg --purge linux-image-4.5.0+
+&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
@@ -136,18 +128,16 @@ I need to add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Find &lt;code&gt;/dev/sda3&lt;/code&gt; disk &lt;code&gt;UUID&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ lsblk -o +UUID /dev/sda3
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ lsblk -o +UUID /dev/sda3
 NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT UUID
-sda3   8:3    0 203.1G  0 part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
-&lt;/code&gt;&lt;/pre&gt;
+sda3   8:3    &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; 203.1G  &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; part /home      c0b3529a-c9ef-4c92-88c2-b278a7c4111b
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Add one line in &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;UUID=c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime 0 2
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #19177C&#34;&gt;UUID&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;c0b3529a-c9ef-4c92-88c2-b278a7c4111b /home ext4 defaults,noatime &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; 2
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot PC.&lt;/li&gt;
@@ -169,9 +159,8 @@ Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Supp
 
 &lt;li&gt;&lt;p&gt;Active fcitx input frame work&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;im-config
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;im-config
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Open &lt;code&gt;System Setting&lt;/code&gt;-&amp;gt; &lt;code&gt;Language Support&lt;/code&gt;. At &lt;code&gt;Keyboard input method system:&lt;/code&gt;, select &lt;code&gt;fcitx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
@@ -194,8 +183,7 @@ Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Supp
       <description>
 
 &lt;p&gt;HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&amp;rsquo;t work. Use &lt;code&gt;ifconfig&lt;/code&gt; can&amp;rsquo;t see wireless card, only see lo.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ifconfig
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ ifconfig
 lo        Link encap:Local Loopback
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
@@ -203,14 +191,13 @@ lo        Link encap:Local Loopback
           RX packets:2191 errors:0 dropped:0 overruns:0 frame:0
           TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
-          RX bytes:191462 (191.4 KB)  TX bytes:191462 (191.4 KB)
-&lt;/code&gt;&lt;/pre&gt;
+          RX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;  TX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Use &lt;code&gt;lspci&lt;/code&gt; can find wireless card.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ lspci |grep Network
-01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ lspci |grep Network
+01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;rev 01&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&#34;install-driver:ce1783a100b0daa7a7d58e9ac1bda53f&#34;&gt;Install Driver&lt;/h3&gt;
 
@@ -219,40 +206,35 @@ lo        Link encap:Local Loopback
 
 &lt;li&gt;&lt;p&gt;Untar the downloaded file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir bcm
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;mkdir bcm
 tar xzf hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz -C bcm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Build module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;cd bcm
-make API=CFG80211
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; bcm
+make &lt;span style=&#34;color: #19177C&#34;&gt;API&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;CFG80211
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo make install
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo make install
 depmod
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Unload bcma module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;blacklist bcma&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;blacklist bcma&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot laptop&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo reboot
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now WiFi work well.&lt;/p&gt;
 

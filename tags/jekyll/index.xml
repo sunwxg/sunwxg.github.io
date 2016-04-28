@@ -22,22 +22,19 @@
 &lt;p&gt;Following the &lt;a href=&#34;https://pages.github.com/&#34;&gt;https://pages.github.com/&lt;/a&gt; make a repository.&lt;/p&gt;
 
 &lt;h2 id=&#34;install-jekyll:94d627e12f394429874ffbc569f8f23a&#34;&gt;Install Jekyll&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get install jekyll
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;apt-get install jekyll
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&#34;create-new-jekyll-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Create new jekyll site&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
-cd sunwxg.github.io
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/sunwxg/sunwxg.github.io.git
+&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; sunwxg.github.io
 jekyll new .
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&#34;browse-your-blog-site:94d627e12f394429874ffbc569f8f23a&#34;&gt;Browse your blog site&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;jekyll build
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;jekyll build
 jekyll serve
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Browse &lt;a href=&#34;http://localhost:4000&#34;&gt;http://localhost:4000&lt;/a&gt;&lt;/p&gt;
 
@@ -46,9 +43,8 @@ jekyll serve
 &lt;p&gt;Reference jekyll &lt;a href=&#34;https://jekyllrb.com/docs/configuration/&#34;&gt;manual&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;push-to-remote-repository:94d627e12f394429874ffbc569f8f23a&#34;&gt;Push to remote repository&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;git push
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;git push
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Browse &lt;a href=&#34;http://sunwxg.github.io&#34;&gt;http//sunwxg.github.io&lt;/a&gt;&lt;/p&gt;
 </description>

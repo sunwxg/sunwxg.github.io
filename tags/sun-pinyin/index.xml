@@ -23,9 +23,8 @@ Open &lt;code&gt;System Setting&lt;/code&gt; -&amp;gt; &lt;code&gt;Language Supp
 
 &lt;li&gt;&lt;p&gt;Active fcitx input frame work&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;im-config
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;im-config
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Open &lt;code&gt;System Setting&lt;/code&gt;-&amp;gt; &lt;code&gt;Language Support&lt;/code&gt;. At &lt;code&gt;Keyboard input method system:&lt;/code&gt;, select &lt;code&gt;fcitx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;

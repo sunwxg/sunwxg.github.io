@@ -18,8 +18,7 @@
       <description>
 
 &lt;p&gt;HP ENVY13 laptop install Ubuntu 15.10, WiFi didn&amp;rsquo;t work. Use &lt;code&gt;ifconfig&lt;/code&gt; can&amp;rsquo;t see wireless card, only see lo.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ifconfig
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ ifconfig
 lo        Link encap:Local Loopback
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
@@ -27,14 +26,13 @@ lo        Link encap:Local Loopback
           RX packets:2191 errors:0 dropped:0 overruns:0 frame:0
           TX packets:2191 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
-          RX bytes:191462 (191.4 KB)  TX bytes:191462 (191.4 KB)
-&lt;/code&gt;&lt;/pre&gt;
+          RX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;  TX bytes:191462 &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;191.4 KB&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Use &lt;code&gt;lspci&lt;/code&gt; can find wireless card.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ lspci |grep Network
-01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n (rev 01)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;$ lspci |grep Network
+01:00.0 Network controller: Broadcom Corporation BCM43142 802.11b/g/n &lt;span style=&#34;color: #666666&#34;&gt;(&lt;/span&gt;rev 01&lt;span style=&#34;color: #666666&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&#34;install-driver:ce1783a100b0daa7a7d58e9ac1bda53f&#34;&gt;Install Driver&lt;/h3&gt;
 
@@ -43,40 +41,35 @@ lo        Link encap:Local Loopback
 
 &lt;li&gt;&lt;p&gt;Untar the downloaded file.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir bcm
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;mkdir bcm
 tar xzf hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz -C bcm
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Build module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;cd bcm
-make API=CFG80211
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;cd&lt;/span&gt; bcm
+make &lt;span style=&#34;color: #19177C&#34;&gt;API&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;CFG80211
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Install module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo make install
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo make install
 depmod
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Unload bcma module.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;blacklist bcma&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #008000&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&amp;quot;blacklist bcma&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; /etc/modprobe.d/blacklist.conf
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Reboot laptop&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo reboot
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;sudo reboot
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now WiFi work well.&lt;/p&gt;
 

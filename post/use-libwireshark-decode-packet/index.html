@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.15" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/bootstrap-3.3.6.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/font-awesome-4.5.0.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/theme_style.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.6.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.5.0.min.css">
+    <link rel="stylesheet" href="/css/theme_style.css">
     
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
@@ -42,10 +42,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://sunwxg.github.io/">Sun Wang&#39;s Blog</a>
+            <a class="navbar-brand" href="/">Sun Wang&#39;s Blog</a>
           </div>
 
-	<a class="navbar-brand navbar-right" href="http://sunwxg.github.io/about/">About</a>
+	<a class="navbar-brand navbar-right" href="/about/">About</a>
 	<a class="navbar-brand navbar-right" href="https://github.com/sunwxg">Github</a>
       </nav>
 
@@ -91,20 +91,19 @@
             <p><p>We use Wireshark tool to decode IP packet and analyse signaling. If we want to write our own tool to decode packet, we can use libwireshark library.</p>
 
 <p>First do some initial work.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>init_process_policies();
 
-<pre><code class="language-C">init_process_policies();
+epan_init(register_all_protocols, register_all_protocol_handoffs, <span style="color: #008000">NULL</span>, <span style="color: #008000">NULL</span>);
 
-epan_init(register_all_protocols, register_all_protocol_handoffs, NULL, NULL);
+<span style="color: #408080; font-style: italic">/* cfile is a global varible */</span>
+cap_file_init(<span style="color: #666666">&amp;</span>cfile);
+cfile.filename <span style="color: #666666">=</span> filename;
 
-/* cfile is a global varible */
-cap_file_init(&amp;cfile);
-cfile.filename = filename;
-
-cfile.count = 0;
-cfile.epan = epan_new();
-cfile.epan-&gt;data = &amp;cfile;
-cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
-</code></pre>
+cfile.count <span style="color: #666666">=</span> <span style="color: #666666">0</span>;
+cfile.epan <span style="color: #666666">=</span> epan_new();
+cfile.epan<span style="color: #666666">-&gt;</span>data <span style="color: #666666">=</span> <span style="color: #666666">&amp;</span>cfile;
+cfile.epan<span style="color: #666666">-&gt;</span>get_frame_ts <span style="color: #666666">=</span> tshark_get_frame_ts;
+</pre></div>
 
 <p>Second read and decode packet.</p>
 
@@ -113,57 +112,54 @@ cfile.epan-&gt;get_frame_ts = tshark_get_frame_ts;
 <p>Function <code>epan_dissect_new</code> create a new <code>struct epan_dissect_t</code>.</p>
 
 <p>Function <code>epan_dissect_run</code> decode packet.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">if</span> (wtap_read(cfile.wth, <span style="color: #666666">&amp;</span>err, <span style="color: #666666">&amp;</span>err_info, <span style="color: #666666">&amp;</span>data_offset)) {
 
-<pre><code class="language-C">if (wtap_read(cfile.wth, &amp;err, &amp;err_info, &amp;data_offset)) {
-
-	cfile.count++;
+	cfile.count<span style="color: #666666">++</span>;
 
 	frame_data fdlocal;
-	frame_data_init(&amp;fdlocal, cfile.count, whdr, data_offset, cum_bytes);
+	frame_data_init(<span style="color: #666666">&amp;</span>fdlocal, cfile.count, whdr, data_offset, cum_bytes);
 
-	edt = epan_dissect_new(cfile.epan, TRUE, TRUE);
+	edt <span style="color: #666666">=</span> epan_dissect_new(cfile.epan, TRUE, TRUE);
 
-	frame_data_set_before_dissect(&amp;fdlocal, &amp;cfile.elapsed_time, &amp;cfile.ref, cfile.prev_dis);
-	cfile.ref = &amp;fdlocal;
+	frame_data_set_before_dissect(<span style="color: #666666">&amp;</span>fdlocal, <span style="color: #666666">&amp;</span>cfile.elapsed_time, <span style="color: #666666">&amp;</span>cfile.ref, cfile.prev_dis);
+	cfile.ref <span style="color: #666666">=</span> <span style="color: #666666">&amp;</span>fdlocal;
 
-	epan_dissect_run(edt, cfile.cd_t, &amp;(cfile.phdr), frame_tvbuff_new(&amp;fdlocal, buf), &amp;fdlocal, &amp;cfile.cinfo);
+	epan_dissect_run(edt, cfile.cd_t, <span style="color: #666666">&amp;</span>(cfile.phdr), frame_tvbuff_new(<span style="color: #666666">&amp;</span>fdlocal, buf), <span style="color: #666666">&amp;</span>fdlocal, <span style="color: #666666">&amp;</span>cfile.cinfo);
 
-	frame_data_set_after_dissect(&amp;fdlocal, &amp;cum_bytes);
-	cfile.prev_cap = cfile.prev_dis = frame_data_sequence_add(cfile.frames, &amp;fdlocal);
+	frame_data_set_after_dissect(<span style="color: #666666">&amp;</span>fdlocal, <span style="color: #666666">&amp;</span>cum_bytes);
+	cfile.prev_cap <span style="color: #666666">=</span> cfile.prev_dis <span style="color: #666666">=</span> frame_data_sequence_add(cfile.frames, <span style="color: #666666">&amp;</span>fdlocal);
 
-	//free space
-	frame_data_destroy(&amp;fdlocal);
+	<span style="color: #408080; font-style: italic">//free space</span>
+	frame_data_destroy(<span style="color: #666666">&amp;</span>fdlocal);
 
-	*edt_r = edt;
-	return TRUE;
+	<span style="color: #666666">*</span>edt_r <span style="color: #666666">=</span> edt;
+	<span style="color: #008000; font-weight: bold">return</span> TRUE;
 }
-return FALSE;
-</code></pre>
+<span style="color: #008000; font-weight: bold">return</span> FALSE;
+</pre></div>
 
 <p>Print out packet.</p>
-
-<pre><code class="language-C">/* print out as XML format */
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">/* print out as XML format */</span>
 proto_tree_write_pdml(edt, stdout);
 
-/* print out as TEXT format */
-proto_tree_print(&amp;print_args, edt, print_stream);
-</code></pre>
+<span style="color: #408080; font-style: italic">/* print out as TEXT format */</span>
+proto_tree_print(<span style="color: #666666">&amp;</span>print_args, edt, print_stream);
+</pre></div>
 
 <p>Release memory.</p>
-
-<pre><code class="language-C">epan_dissect_free(edt);
-edt = NULL;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>epan_dissect_free(edt);
+edt <span style="color: #666666">=</span> <span style="color: #008000">NULL</span>;
 
 free_frame_data_sequence(cfile.frames);
-cfile.frames = NULL;
+cfile.frames <span style="color: #666666">=</span> <span style="color: #008000">NULL</span>;
 
 wtap_close(cfile.wth);
-cfile.wth = NULL;
+cfile.wth <span style="color: #666666">=</span> <span style="color: #008000">NULL</span>;
 
 epan_free(cfile.epan);
 
 epan_cleanup();
-</code></pre>
+</pre></div>
 
 <p>My source code is on <a href="https://github.com/sunwxg/decode_by_libwireshark">github</a>. You can follow the guide to run and debug.</p>
 </p>
@@ -219,8 +215,8 @@ epan_cleanup();
             </footer>
         </div>
 
-        <script src="http://sunwxg.github.io/js/jquery-2.2.0.min.js"></script>
-        <script src="http://sunwxg.github.io/js/bootstrap-3.3.6.min.js"></script>
+        <script src="/js/jquery-2.2.0.min.js"></script>
+        <script src="/js/bootstrap-3.3.6.min.js"></script>
     </body>
 </html>
 

@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.15" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/bootstrap-3.3.6.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/font-awesome-4.5.0.min.css">
-    <link rel="stylesheet" href="http://sunwxg.github.io/css/theme_style.css">
+    <link rel="stylesheet" href="/css/bootstrap-3.3.6.min.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.5.0.min.css">
+    <link rel="stylesheet" href="/css/theme_style.css">
     
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sunwxg.github.io//index.xml">
@@ -42,10 +42,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://sunwxg.github.io/">Sun Wang&#39;s Blog</a>
+            <a class="navbar-brand" href="/">Sun Wang&#39;s Blog</a>
           </div>
 
-	<a class="navbar-brand navbar-right" href="http://sunwxg.github.io/about/">About</a>
+	<a class="navbar-brand navbar-right" href="/about/">About</a>
 	<a class="navbar-brand navbar-right" href="https://github.com/sunwxg">Github</a>
       </nav>
 
@@ -90,42 +90,38 @@
 
             <p><p>When using libwireshark library decoding packet, the decoded data is stored in <code>struct epan_dissect</code>.
 We can browse this struct to search or display packet data.</p>
-
-<pre><code>struct epan_dissect {
-	struct epan_session *session;
-	tvbuff_t	*tvb;
-	proto_tree	*tree;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">struct</span> epan_dissect {
+	<span style="color: #008000; font-weight: bold">struct</span> epan_session <span style="color: #666666">*</span>session;
+	tvbuff_t	<span style="color: #666666">*</span>tvb;
+	proto_tree	<span style="color: #666666">*</span>tree;
 	packet_info	pi;
 };
-</code></pre>
+</pre></div>
 
 <p><code>epan_dissect-&gt;tree</code> points to data struct tree.</p>
-
-<pre><code>typedef proto_node proto_tree;
-typedef struct _proto_node {
-	struct _proto_node *first_child;
-	struct _proto_node *last_child;
-	struct _proto_node *next;
-	struct _proto_node *parent;
-	field_info  *finfo;
-	tree_data_t *tree_data;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">typedef</span> proto_node proto_tree;
+<span style="color: #008000; font-weight: bold">typedef</span> <span style="color: #008000; font-weight: bold">struct</span> _proto_node {
+	<span style="color: #008000; font-weight: bold">struct</span> _proto_node <span style="color: #666666">*</span>first_child;
+	<span style="color: #008000; font-weight: bold">struct</span> _proto_node <span style="color: #666666">*</span>last_child;
+	<span style="color: #008000; font-weight: bold">struct</span> _proto_node <span style="color: #666666">*</span>next;
+	<span style="color: #008000; font-weight: bold">struct</span> _proto_node <span style="color: #666666">*</span>parent;
+	field_info  <span style="color: #666666">*</span>finfo;
+	tree_data_t <span style="color: #666666">*</span>tree_data;
 } proto_node;
-</code></pre>
-
-<pre><code>typedef struct field_info {
-	header_field_info	*hfinfo; /**&lt; pointer to registered field information */
+</pre></div>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">typedef</span> <span style="color: #008000; font-weight: bold">struct</span> field_info {
+	header_field_info	<span style="color: #666666">*</span>hfinfo; <span style="color: #408080; font-style: italic">/**&lt; pointer to registered field information */</span>
 	...
 	fvalue_t		 value;
 } field_info;
-</code></pre>
-
-<pre><code>typedef struct _header_field_info header_field_info;
-struct _header_field_info {
-	const char	*name;    /**&lt; [FIELDNAME] full name of this field */
-	const char	*abbrev;  /**&lt; [FIELDABBREV] abbreviated name of this field */
+</pre></div>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">typedef</span> <span style="color: #008000; font-weight: bold">struct</span> _header_field_info header_field_info;
+<span style="color: #008000; font-weight: bold">struct</span> _header_field_info {
+	<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span>	<span style="color: #666666">*</span>name;    <span style="color: #408080; font-style: italic">/**&lt; [FIELDNAME] full name of this field */</span>
+	<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span>	<span style="color: #666666">*</span>abbrev;  <span style="color: #408080; font-style: italic">/**&lt; [FIELDABBREV] abbreviated name of this field */</span>
 	...
 };
-</code></pre>
+</pre></div>
 
 <p>Every node of tree stores one information of packet.
 The information includes name and value.
@@ -135,42 +131,40 @@ For example if we want to find IP source address, the name is <code>ip.src</code
 
 <p>The value is stored in <code>epan_dissect-&gt;tree-&gt;finfo-&gt;value</code>.
 We can use function <code>fvalue_to_string_repr</code> to convert value to display format.</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span> <span style="color: #666666">*</span>name <span style="color: #666666">=</span> node<span style="color: #666666">-&gt;</span>finfo<span style="color: #666666">-&gt;</span>hfinfo<span style="color: #666666">-&gt;</span>abbrev;
 
-<pre><code>const char *name = node-&gt;finfo-&gt;hfinfo-&gt;abbrev;
-
-fvalue_t fv = node-&gt;finfo-&gt;value;
-char *value = fvalue_to_string_repr(&amp;fv, FTREPR_DISPLAY, NULL);
-</code></pre>
+fvalue_t fv <span style="color: #666666">=</span> node<span style="color: #666666">-&gt;</span>finfo<span style="color: #666666">-&gt;</span>value;
+<span style="color: #B00040">char</span> <span style="color: #666666">*</span>value <span style="color: #666666">=</span> fvalue_to_string_repr(<span style="color: #666666">&amp;</span>fv, FTREPR_DISPLAY, <span style="color: #008000">NULL</span>);
+</pre></div>
 
 <p>After browsing the node of tree, we can print out the data of packet like this.</p>
-
-<pre><code>[ip]
-. [ip.version] 4
-. [ip.hdr_len] 20
-. [ip.dsfield] 0
-. . [ip.dsfield.dscp] 0
-. . [ip.dsfield.ecn] 0
-. [ip.len] 160
-. [ip.id] 24538
-. [ip.flags] 0
-. . [ip.flags.rb] 0
-. . [ip.flags.df] 0
-. . [ip.flags.mf] 0
-. [ip.frag_offset] 0
-. [ip.ttl] 64
-. [ip.proto] 132
-. [ip.checksum] 15303
-. . [ip.checksum_good] 0
-. . [ip.checksum_bad] 0
-. [ip.src] 10.128.228.50
-. [ip.addr] 10.128.228.50
-. [ip.src_host] 10.128.228.50
-. [ip.host] 10.128.228.50
-. [ip.dst] 10.128.229.6
-. [ip.addr] 10.128.229.6
-. [ip.dst_host] 10.128.229.6
-. [ip.host] 10.128.229.6
-</code></pre>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">[</span>ip<span style="color: #666666">]</span>
+. <span style="color: #666666">[</span>ip.version<span style="color: #666666">]</span> 4
+. <span style="color: #666666">[</span>ip.hdr_len<span style="color: #666666">]</span> 20
+. <span style="color: #666666">[</span>ip.dsfield<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.dsfield.dscp<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.dsfield.ecn<span style="color: #666666">]</span> 0
+. <span style="color: #666666">[</span>ip.len<span style="color: #666666">]</span> 160
+. <span style="color: #666666">[</span>ip.id<span style="color: #666666">]</span> 24538
+. <span style="color: #666666">[</span>ip.flags<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.flags.rb<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.flags.df<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.flags.mf<span style="color: #666666">]</span> 0
+. <span style="color: #666666">[</span>ip.frag_offset<span style="color: #666666">]</span> 0
+. <span style="color: #666666">[</span>ip.ttl<span style="color: #666666">]</span> 64
+. <span style="color: #666666">[</span>ip.proto<span style="color: #666666">]</span> 132
+. <span style="color: #666666">[</span>ip.checksum<span style="color: #666666">]</span> 15303
+. . <span style="color: #666666">[</span>ip.checksum_good<span style="color: #666666">]</span> 0
+. . <span style="color: #666666">[</span>ip.checksum_bad<span style="color: #666666">]</span> 0
+. <span style="color: #666666">[</span>ip.src<span style="color: #666666">]</span> 10.128.228.50
+. <span style="color: #666666">[</span>ip.addr<span style="color: #666666">]</span> 10.128.228.50
+. <span style="color: #666666">[</span>ip.src_host<span style="color: #666666">]</span> 10.128.228.50
+. <span style="color: #666666">[</span>ip.host<span style="color: #666666">]</span> 10.128.228.50
+. <span style="color: #666666">[</span>ip.dst<span style="color: #666666">]</span> 10.128.229.6
+. <span style="color: #666666">[</span>ip.addr<span style="color: #666666">]</span> 10.128.229.6
+. <span style="color: #666666">[</span>ip.dst_host<span style="color: #666666">]</span> 10.128.229.6
+. <span style="color: #666666">[</span>ip.host<span style="color: #666666">]</span> 10.128.229.6
+</pre></div>
 
 <p>You can get full source code from <a href="https://github.com/sunwxg/libwireshark_decoded_data.git">https://github.com/sunwxg/libwireshark_decoded_data.git</a>.
 If you want know how libwireshark decodes packet, you can referece another blog <a href="http://sunwxg.github.io/post/use-libwireshark-decode-packet/">Use libwireshark decoding PCAP files</a></p>
@@ -227,8 +221,8 @@ If you want know how libwireshark decodes packet, you can referece another blog 
             </footer>
         </div>
 
-        <script src="http://sunwxg.github.io/js/jquery-2.2.0.min.js"></script>
-        <script src="http://sunwxg.github.io/js/bootstrap-3.3.6.min.js"></script>
+        <script src="/js/jquery-2.2.0.min.js"></script>
+        <script src="/js/bootstrap-3.3.6.min.js"></script>
     </body>
 </html>
 
